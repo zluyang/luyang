@@ -66,7 +66,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="智慧," />
+  <meta name="keywords" content="多线程,算法,Objective-C,iOS," />
 
 
 
@@ -82,17 +82,17 @@
 
 
 
-<meta name="description" content="作者勒庞 乌合之众定义： 同一时间空间，一群无组织，彼此不想干的人，因为某个事件聚集起来，这群人因为事件的发生具备心理上的共通点。 心理特点: 1.本能优先：逃生、破坏、同情 2.互相传染：群体行动的传染性 3.易受暗示 4.缺乏理性，个人智商加入群体，会智商下滑，个体情绪频率和群体频率配对，情绪配对，个人放弃独立思考，容易夸张。 好的方面： 群里的救人、捐助行为 历史事件  法国大革命：议税会议">
-<meta name="keywords" content="智慧">
+<meta name="description" content="LeetCode 1117. H2O 生成 现在有两种线程，氧 oxygen 和氢 hydrogen，你的目标是组织这两种线程来产生水分子。存在一个屏障（barrier）使得每个线程必须等候直到一个完整水分子能够被产生出来。氢和氧线程会被分别给予 releaseHydrogen 和 releaseOxygen 方法来允许它们突破屏障。这些线程应该三三成组突破屏障并能立即组合产生一个水分子。你必须保">
+<meta name="keywords" content="多线程,算法,Objective-C,iOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《乌合之众》读书笔记">
-<meta property="og:url" content="https://zluyang.github.io/luyang/2018/05/20/《乌合之众》读书笔记/index.html">
+<meta property="og:title" content="H2O 生成">
+<meta property="og:url" content="https://zluyang.github.io/luyang/2020/06/23/H2O-生成/index.html">
 <meta property="og:site_name" content="雨生百谷">
-<meta property="og:description" content="作者勒庞 乌合之众定义： 同一时间空间，一群无组织，彼此不想干的人，因为某个事件聚集起来，这群人因为事件的发生具备心理上的共通点。 心理特点: 1.本能优先：逃生、破坏、同情 2.互相传染：群体行动的传染性 3.易受暗示 4.缺乏理性，个人智商加入群体，会智商下滑，个体情绪频率和群体频率配对，情绪配对，个人放弃独立思考，容易夸张。 好的方面： 群里的救人、捐助行为 历史事件  法国大革命：议税会议">
-<meta property="og:updated_time" content="2018-08-22T21:38:31.000Z">
+<meta property="og:description" content="LeetCode 1117. H2O 生成 现在有两种线程，氧 oxygen 和氢 hydrogen，你的目标是组织这两种线程来产生水分子。存在一个屏障（barrier）使得每个线程必须等候直到一个完整水分子能够被产生出来。氢和氧线程会被分别给予 releaseHydrogen 和 releaseOxygen 方法来允许它们突破屏障。这些线程应该三三成组突破屏障并能立即组合产生一个水分子。你必须保">
+<meta property="og:updated_time" content="2020-06-23T06:19:30.624Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《乌合之众》读书笔记">
-<meta name="twitter:description" content="作者勒庞 乌合之众定义： 同一时间空间，一群无组织，彼此不想干的人，因为某个事件聚集起来，这群人因为事件的发生具备心理上的共通点。 心理特点: 1.本能优先：逃生、破坏、同情 2.互相传染：群体行动的传染性 3.易受暗示 4.缺乏理性，个人智商加入群体，会智商下滑，个体情绪频率和群体频率配对，情绪配对，个人放弃独立思考，容易夸张。 好的方面： 群里的救人、捐助行为 历史事件  法国大革命：议税会议">
+<meta name="twitter:title" content="H2O 生成">
+<meta name="twitter:description" content="LeetCode 1117. H2O 生成 现在有两种线程，氧 oxygen 和氢 hydrogen，你的目标是组织这两种线程来产生水分子。存在一个屏障（barrier）使得每个线程必须等候直到一个完整水分子能够被产生出来。氢和氧线程会被分别给予 releaseHydrogen 和 releaseOxygen 方法来允许它们突破屏障。这些线程应该三三成组突破屏障并能立即组合产生一个水分子。你必须保">
 
 
 
@@ -113,9 +113,9 @@
 
 
 
-  <link rel="canonical" href="https://zluyang.github.io/luyang/2018/05/20/《乌合之众》读书笔记/"/>
+  <link rel="canonical" href="https://zluyang.github.io/luyang/2020/06/23/H2O-生成/"/>
 
-  <title> 《乌合之众》读书笔记 | 雨生百谷 </title>
+  <title> H2O 生成 | 雨生百谷 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -257,7 +257,7 @@
             
             
               
-                《乌合之众》读书笔记
+                H2O 生成
               
             
           </h1>
@@ -269,8 +269,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-05-20T12:03:25+08:00" content="2018-05-20">
-              2018-05-20
+            <time itemprop="dateCreated" datetime="2020-06-23T13:54:27+08:00" content="2020-06-23">
+              2020-06-23
             </time>
           </span>
 
@@ -283,8 +283,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
                   </a>
                 </span>
 
@@ -299,8 +299,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2018/05/20/《乌合之众》读书笔记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/20/《乌合之众》读书笔记/" itemprop="commentsCount"></span>
+                <a href="/2020/06/23/H2O-生成/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/06/23/H2O-生成/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -328,59 +328,15 @@
       
 
       
-        <p>作者勒庞</p>
-<p>乌合之众定义：</p>
-<p>同一时间空间，一群无组织，彼此不想干的人，因为某个事件聚集起来，这群人因为事件的发生具备心理上的共通点。</p>
-<p>心理特点:</p>
-<p>1.本能优先：逃生、破坏、同情</p>
-<p>2.互相传染：群体行动的传染性</p>
-<p>3.易受暗示</p>
-<p>4.缺乏理性，个人智商加入群体，会智商下滑，个体情绪频率和群体频率配对，情绪配对，个人放弃独立思考，容易夸张。</p>
-<p>好的方面：</p>
-<p>群里的救人、捐助行为</p>
-<p>历史事件</p>
-<ul>
-<li><p>法国大革命：议税会议，国王像第三等级征税，群众不满</p>
-</li>
-<li><p>义和团等历史运动</p>
-</li>
-</ul>
-<p>乌合之众形成的直接因素：</p>
-<ul>
-<li><p>模糊概念词汇 自由平等博爱等模糊词汇</p>
-</li>
-<li><p>集体行动中的幻觉，虚构目标、场景、运动中幻觉更容易出现，置身山呼海啸的运动中，他们会觉得他们是不可阻挡的，革命胜利就在前方</p>
-</li>
-<li><p>群体具备的历史经验，法国国王之前向第三等级征税很多次了，旱灾等政府救灾不利，共同的生活经验产生不满</p>
-</li>
-</ul>
-<p>乌合之众形成的间接因素：</p>
-<ul>
-<li><p>种族：种族决定了一群人的气质，法国人的气质是容易冲动、容易受到蛊惑的民族，英国人是理性沉稳，不像法国人这么偏执，容易受到暗示，同样改朝换代，英国人搞的光荣革命基本没有死人，法国人攻占了巴士底狱，把路易十六送上了断头台。</p>
-</li>
-<li><p>传统因素：和种族是绑定的，这一点上，勒庞和鲁迅很像，不同国家不同种族的人是有各自特点气质的，鲁迅批判中国人哀其不幸怒其不争，勒庞批判法国人太冒进不够理性</p>
-</li>
-<li><p>时间：传统、政治制度、教育都要依靠时间的积累，再牛的人要做成一件事都需要时间，等待能量储备。</p>
-</li>
-<li><p>政治、社会制度：同样民主制度，英国美国高度繁荣，拉丁民族就实现的比较扯（西班牙殖民过的阿根廷、智力玻利维亚很混乱）</p>
-</li>
-<li><p>教育：法国教育是把受过教育的人变成敌人</p>
-</li>
-</ul>
-<p>小结一下：种族是核心因素</p>
-<p>领袖在乌合之众的作用：</p>
-<p>一时拥有领袖气质的人，临时性暂时性的领袖，球迷骚乱的先锋，跳水救人的见义勇为者，做那件事的时候成为领袖。</p>
-<p>拥有更持久的意志力，长期占据主要位置，死后的影响可能超过生前，革命领袖、开国元勋、大思想家、传奇商人</p>
-<p>领袖的手段：</p>
-<p>do {</p>
-<p>断言：坚定地下判断，没有论证，坚定的语气能让台下的观众觉得正常和舒适，说理和论证战胜不了一些词语和套话，只要一听到他们人人都会肃然起敬，扶手昂立，大而化之的套话振奋人心，精神抖擞。</p>
-<p>重复：造成人心浮动，拿破仑说极为重要的修辞法只有一个那就是重复，拿破仑是鼓动专家。</p>
-<p>传染：日本福岛核泄大家抢盐，是因为有人说吃盐可以低于辐射，在一个群体中恐惧会让人不管不顾，谣言止于智者，都陷入恐慌就不存在智者</p>
-<p>通过舆论、文学和艺术等等进行体现，达到个人崇拜的目的。</p>
-<p>} while(get 名望)</p>
-<p>如何看待这本书的意义：</p>
-<p>仰视社会学家的洞见、平时他的论述，鸟瞰他的观点在整个思想脉络中的位置，知道他的位置才能作出批判性的解读，才能理论联系实践，乌合之众的当代意义是他发现问题的功能，而非解决问题的功能，他下的判断很精准，他描述的群众心里特点发人深省、让我们避免被某个夸大宣传的产品所蛊惑，不自觉被某个大V的言论带领，成为乌合之众的门槛很低，人类有一种服从权威命令的天性，在一定情境下，人们会遵照权威的说辞放下道德约束去伤害无辜的人，当然也有在集体行动中寻求个人利益的人，只是搭便车，比如混进游行中以便领盒饭的人。</p>
-
+        <h1 id="LeetCode-1117-H2O-生成"><a href="#LeetCode-1117-H2O-生成" class="headerlink" title="LeetCode 1117. H2O 生成"></a><a href="https://leetcode-cn.com/problems/building-h2o/" target="_blank" rel="external">LeetCode 1117. H2O 生成</a></h1><blockquote>
+<p>现在有两种线程，氧 oxygen 和氢 hydrogen，你的目标是组织这两种线程来产生水分子。<br>存在一个屏障（barrier）使得每个线程必须等候直到一个完整水分子能够被产生出来。<br>氢和氧线程会被分别给予 releaseHydrogen 和 releaseOxygen 方法来允许它们突破屏障。<br>这些线程应该三三成组突破屏障并能立即组合产生一个水分子。<br>你必须保证产生一个水分子所需线程的结合必须发生在下一个水分子产生之前。</p>
+<p>换句话说:</p>
+<p>如果一个氧线程到达屏障时没有氢线程到达，它必须等候直到两个氢线程到达。<br>如果一个氢线程到达屏障时没有其它线程到达，它必须等候直到一个氧线程和另一个氢线程到达。<br>书写满足这些限制条件的氢、氧线程同步代码。</p>
+</blockquote>
+<h1 id="Objective-C-的解法"><a href="#Objective-C-的解法" class="headerlink" title="Objective-C 的解法"></a>Objective-C 的解法</h1><p><strong>利用两个NSCondition条件变量来彼此关照，Code如下：</strong></p>
+<figure class="highlight plain"><figcaption><span>(void)viewDidLoad &#123;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">    [super viewDidLoad];</div><div class="line">    self.hCondition = [[NSCondition alloc] init];</div><div class="line">    self.oCondition = [[NSCondition alloc] init];</div><div class="line">    self.lock = [[NSRecursiveLock alloc] init];</div><div class="line">    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</div><div class="line">        while (1) &#123;</div><div class="line">            [self hydrogen];</div><div class="line">            usleep(1000);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</div><div class="line">        while (1) &#123;</div><div class="line">            [self oxygen];</div><div class="line">            usleep(1000);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)hydrogen &#123;</div><div class="line">    [self.oCondition lock];</div><div class="line">    if (_hydrogenCnt == 2) &#123;</div><div class="line">        //氢原子ready了，就等氧原子了</div><div class="line">        [self.oCondition wait];</div><div class="line">    &#125; else &#123;</div><div class="line">        NSLog(@&quot;H&quot;);</div><div class="line">        _hydrogenCnt++;</div><div class="line">        //氢原子合成1个，是否可以合成H2O了</div><div class="line">        [self.hCondition signal];</div><div class="line">    &#125;</div><div class="line">    if (_hydrogenCnt == 2 &amp;&amp; _oxygenCnt == 1) &#123;</div><div class="line">        _hydrogenCnt = 0;</div><div class="line">        _oxygenCnt = 0;</div><div class="line">        NSLog(@&quot;H2O&quot;);</div><div class="line">    &#125;</div><div class="line">    [self.oCondition unlock];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)oxygen &#123;</div><div class="line">    [self.hCondition lock];</div><div class="line">    if (_oxygenCnt == 1) &#123;</div><div class="line">        //氧原子ready了，就等氢原子了</div><div class="line">        [self.hCondition wait];</div><div class="line">    &#125; else &#123;</div><div class="line">        NSLog(@&quot;O&quot;);</div><div class="line">         _oxygenCnt++;</div><div class="line">         //氧原子合成1个，是否可以合成H2O了</div><div class="line">        [self.oCondition signal];</div><div class="line">    &#125;</div><div class="line">    if (_hydrogenCnt == 2 &amp;&amp; _oxygenCnt == 1) &#123;</div><div class="line">        _hydrogenCnt = 0;</div><div class="line">        _oxygenCnt = 0;</div><div class="line">        NSLog(@&quot;H2O&quot;);</div><div class="line">    &#125;</div><div class="line">    [self.hCondition unlock];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>总结：</strong><br>Condition操作需要包在lock操作里，保证数据的准确性<br>两个线程加上usleep(1000) 会把CPU占用率从40%降到10%<br>使用条件锁的模式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">- (void) method1 &#123;</div><div class="line">    [myCondition lock];</div><div class="line">    while (!someCheckIsTrue)</div><div class="line">        [myCondition wait];</div><div class="line"></div><div class="line"></div><div class="line">    // Do something.</div><div class="line"></div><div class="line"></div><div class="line">    [myCondition unlock];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void) method2 &#123;</div><div class="line"></div><div class="line">    [myCondition lock];</div><div class="line"></div><div class="line"></div><div class="line">    // Do something.</div><div class="line"></div><div class="line"></div><div class="line">    someCheckIsTrue = YES;</div><div class="line">    [myCondition signal];</div><div class="line">    [myCondition unlock];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -430,7 +386,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/智慧/" rel="tag">#智慧</a>
+            <a href="/tags/多线程/" rel="tag">#多线程</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+            <a href="/tags/Objective-C/" rel="tag">#Objective-C</a>
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
           
         </div>
       
@@ -439,17 +401,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/20/《哈弗非虚构写作课》读书笔记/" rel="next" title="《哈弗非虚构写作课》读书笔记">
-                <i class="fa fa-chevron-left"></i> 《哈弗非虚构写作课》读书笔记
+              <a href="/2020/04/19/幸福课-第一讲/" rel="next" title="幸福课-第一讲">
+                <i class="fa fa-chevron-left"></i> 幸福课-第一讲
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/20/《人类简史》读书笔记/" rel="prev" title="《人类简史》读书笔记">
-                《人类简史》读书笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -595,7 +553,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LeetCode-1117-H2O-生成"><span class="nav-number">1.</span> <span class="nav-text">LeetCode 1117. H2O 生成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Objective-C-的解法"><span class="nav-number">2.</span> <span class="nav-text">Objective-C 的解法</span></a></li></ol></div>
             
           </div>
         </section>
@@ -736,9 +694,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'liulangblog';
-      var disqus_identifier = '2018/05/20/《乌合之众》读书笔记/';
-      var disqus_title = "《乌合之众》读书笔记";
-      var disqus_url = 'https://zluyang.github.io/luyang/2018/05/20/《乌合之众》读书笔记/';
+      var disqus_identifier = '2020/06/23/H2O-生成/';
+      var disqus_title = "H2O 生成";
+      var disqus_url = 'https://zluyang.github.io/luyang/2020/06/23/H2O-生成/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
