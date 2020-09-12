@@ -1,0 +1,800 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next muse">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS开发, 音视频, 陆洋, 六郎, Blog, 博客, 台球, 读书, WWDC" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="今天我们学习如何在iOS14 使用Vision 框架获取身体和手部姿势。早在Vision框架首次引入时，它就带有一个基于深度学习技术的新人脸识别。从那时起，它有了第二版的改进，可以检测到倒过来的面孔。Vision的首次亮相还包括人脸landmark检测，并且随着新版本的改进也得到了改进。去年，我们开始为您提供一组新的内容丰富的API，以推断瞳孔的位置。去年的另一个新发现是人体躯干检测。  今年V">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[WWDC2020 Session 10653] Detect Body and Hand Pose with Vision">
+<meta property="og:url" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/index.html">
+<meta property="og:site_name" content="雨生百谷">
+<meta property="og:description" content="今天我们学习如何在iOS14 使用Vision 框架获取身体和手部姿势。早在Vision框架首次引入时，它就带有一个基于深度学习技术的新人脸识别。从那时起，它有了第二版的改进，可以检测到倒过来的面孔。Vision的首次亮相还包括人脸landmark检测，并且随着新版本的改进也得到了改进。去年，我们开始为您提供一组新的内容丰富的API，以推断瞳孔的位置。去年的另一个新发现是人体躯干检测。  今年V">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966282955497.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966288301968.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966290331607.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966290447129.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966291963660.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966296438469.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966315998764.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966396249428.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966395888838.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966325099168.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966385470892.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966399222524.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966400205439.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966400718719.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966401493346.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966401979399.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966826039182.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966840904338.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966856797038.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966858287423.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966868912235.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966872159241.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966873136752.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966875884812.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966877315774.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966904076018.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966906678029.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966908746257.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966912325706.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966936952761.jpg">
+<meta property="og:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966916584446.jpg">
+<meta property="og:updated_time" content="2020-09-12T03:51:21.894Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[WWDC2020 Session 10653] Detect Body and Hand Pose with Vision">
+<meta name="twitter:description" content="今天我们学习如何在iOS14 使用Vision 框架获取身体和手部姿势。早在Vision框架首次引入时，它就带有一个基于深度学习技术的新人脸识别。从那时起，它有了第二版的改进，可以检测到倒过来的面孔。Vision的首次亮相还包括人脸landmark检测，并且随着新版本的改进也得到了改进。去年，我们开始为您提供一组新的内容丰富的API，以推断瞳孔的位置。去年的另一个新发现是人体躯干检测。  今年V">
+<meta name="twitter:image" content="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966282955497.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/"/>
+
+  <title> [WWDC2020 Session 10653] Detect Body and Hand Pose with Vision | 雨生百谷 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">雨生百谷</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">“Live well, Laugh often, Love much.”</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-commenting"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+
+
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                [WWDC2020 Session 10653] Detect Body and Hand Pose with Vision
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-09-12T10:28:55+08:00" content="2020-09-12">
+              2020-09-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">热度
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>℃
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>今天我们学习如何在iOS14 使用Vision 框架获取身体和手部姿势。<br>早在Vision框架首次引入时，它就带有一个基于深度学习技术的新人脸识别。<br>从那时起，它有了第二版的改进，可以检测到倒过来的面孔。<br>Vision的首次亮相还包括人脸landmark检测，并且随着新版本的改进也得到了改进。<br>去年，我们开始为您提供一组新的内容丰富的API，以推断瞳孔的位置。<br>去年的另一个新发现是人体躯干检测。</p>
+</blockquote>
+<p>今年Vision框架将提供手势识别，我们还将通过Vision框架提供姿势识别。<br>我们看几个场景<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966282955497.jpg" alt=""><br>视觉框架现在可以帮助进行手势估计，也许可以实现隔空把尤克里里弄出动静。。<br>你可能想摆脱自拍杆，通过识别「ok手势/三秒手势」来代替自拍杆按钮的按下动作<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966288301968.jpg" alt=""><br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966290331607.jpg" alt=""><br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966290447129.jpg" alt=""><br>手势表情，做直播的同学对类似的case不陌生<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966291963660.jpg" alt=""></p>
+<p>如何使用Vision框架来处理这些：<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966296438469.jpg" alt=""><br>New 一个ImageRequestHandler，<br>New 一个VNDetectHumanHandPoseRequest<br>调用performRequests 把 VNDetectHumanHandPoseRequest提供给处理程序，处理完成返回VNRecognizedPointsObservation，里面会有所有找到的点和对应的法线，手势识别的点是这个类VNRecognizedPoint，下图是VNRecognizedPoint类继承层次，除了点的xy坐标还有置信度和landmark标识字段。<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966315998764.jpg" alt=""></p>
+<p>下面是你VNRecognizedPointsObservation中访问这些点的方法。</p>
+<p>首先，可以通过调用recognizedPoints（forGroupKey：）请求坐标字典。<br>想要所有点，groupKey传VNRecognizedPointGroupKeyAll。</p>
+<p>还提供了其他VNRecognizedPointGroupKeys，<br>（VNRecognizedPointGroupKey和landmark的关系是，每个landmark至少属于一个VNRecognizedPointGroupKey标识的组）<br>可以通过VNRecognizedPointKey.handlandmarkKeyIndexFinger来访问食指的landmark<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966396249428.jpg" alt=""></p>
+<p>通过VNRecognizedPointKey.handlandmarkKeyIndexTip来访问食指的指尖的点。<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966395888838.jpg" alt=""><br>上面两个case 的 Code 如下<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966325099168.jpg" alt=""><br>下面是手部landmark说明，每根指头4个 landmark，腕部一个，一共21个<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966385470892.jpg" alt=""></p>
+<p>刚才讲到的近端食指指尖的key是TIP<br>顺着手往下走的第一个关节是远端指间关节，称为DIP。</p>
+<p><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966399222524.jpg" alt=""><br>下一个关节是指间近端关节，我们简称为PIP。<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966400205439.jpg" alt=""><br>最后，在手指根部是掌指关节，我们缩写为MCP。<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966400718719.jpg" alt=""><br>这个访问模式在每个手指都适用，比如下面是无名指的<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966401493346.jpg" alt=""><br>大拇指比较特殊：<br>拇指也有一个尖端TIP。<br>第一个关节是指间关节，我们简称为IP。<br>下一个关节是掌指关节，对于拇指，我们缩写为MP。<br>拇指的下一个关节是腕掌关节，缩写为CMC。<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966401979399.jpg" alt=""><br>然后是手腕的根部，也有它自己的landmark。<br>腕部标志位于腕部中心，除VNRecognizedPointGroupKeyAll外，不属于任何组（换句话说，它不属于任何手指或拇指组）</p>
+<p>MaximumHandCount：<br>Vision在API中还提供了其他一些功能来应对场景中「很多手」的情况，也许你只对场景中最大的一两只手感兴趣，不希望返回结果包含较的「小手儿」，您可以通过在请求上指定maximumHandCount来控制它，默认值为两个，可以设置为所需的最大值，由于会给检测到的每只手生成手势，此参数设置越大，产生的计算延迟越高，参数设置为较小数字，则不会为检测到的超出maximumHandCount的任何手计算手势，可以提高性能。<br>VNTrackObjectRequest：<br>如果只在乎手的位置，可以选择用VNTrackObjectRequest，首先，如果您要做的只是跟踪手的位置，而不在乎pose，则可以使用手势姿势请求找到手，然后使用VNTrackObjectRequest来了解手的postion。其次，跟踪请求能让你知道哪只手在动。<br>当物体离开屏幕或暂时被遮挡时，视觉跟踪器能够很好地保持物体的可识别性。<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966826039182.jpg" alt=""></p>
+<p>物体追踪器的限制:<br>屏幕边缘附近的手会被部分遮挡，在这种情况下不能保证手部Pose正确被识别。<br>同样，追踪算法在平行于相机观看方向的手上可能会遇到困难，比如下面的空手道选手的情况<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966840904338.jpg" alt=""><br>戴手套的手也会很困难。。。<br>有时会把脚识别为手。。。<br>脚戴上手套会不会负负得正不知道。。。<br>CoreML面对的情况有时还挺复杂的，可以理解。。。<br>想起几年前的段子：机器学习基本的二分问题，判断「泡芙」还是「吉娃娃」。。我看了都😳<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966856797038.jpg" alt=""></p>
+<p>拉布拉多、吮指鸡块，傻傻分不清楚。。。<br>牧羊犬、墩布     ，傻傻分不清楚。。。<br>睡觉狗、百吉饼   ，傻傻分不清楚。。。<br>柴犬、棉花糖     ，傻傻分不清楚。。。<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966858287423.jpg" alt=""></p>
+<p><a href="https://www.topbots.com/chihuahua-muffin-searching-best-computer-vision-api/" target="_blank" rel="external">西点和狗狗们都很受伤。。。</a><br>鉴于此，在设计应用程序时，最好牢记所有这些注意事项，并向用户充分说明，避免尴尬。</p>
+<p>计算视觉 ☞ 身体姿势<br>Vision今年的新增功能，可帮助分析多人的身体姿势。<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966868912235.jpg" alt=""><br>我们可以用姿势来查找篮球运动员不重叠的帧，然后创建一个看起来很酷的图像。<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966872159241.jpg" alt=""><br>对搬砖姿势进行纠正<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966873136752.jpg" alt=""><br>Vision的「动作识别」功能可以用来分类视频中的这些动作，比如下面视频中的大跳<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966875884812.jpg" alt=""><br>这些孩子是否学会了跳舞,还是只有跳舞的冲动，都可以通过上面的识别器来分辨<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966877315774.jpg" alt=""><br>这个分类器我比较感兴趣，所以今天的分享会继续这个对应的session一口气撸完，分享会比较长，见谅。<br>要分析人体姿势的图像，其流程与手部姿势识别过程非常相似。第一件事就是创建一个请求处理对象，下一步是创建VNDetectHumanBodyPoseRequest，然后使用请求处理对象处理请求，此示例与手势示例之间的区别在于，用单词“ body”代替“ hand”。<br>Body的识别结果和Hand在结构上非常类似，比如，groupKey的内容换成了五官（Landmark换成了鼻子，左眼和右眼以及左耳和右耳）<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966904076018.jpg" alt=""><br>左/右手臂Group有三个Landmark：肩部，肘部和手腕<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966906678029.jpg" alt=""><br>接下来是躯干。请注意，它也包含肩膀，因此，肩部Landmark属于多个组。<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966908746257.jpg" alt=""><br>还包括肩膀之间的颈点，左右髋关节以及两个髋关节之间的关节bodyLandmarkKeyRoot<br>注意髋关节同时出现在躯干组和每条腿组中。<br>在腿部Group中除了髋关节、还包括膝盖、脚踝的Landmark<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966912325706.jpg" alt=""><br>同样身体姿势识别存在一些限制</p>
+<ul>
+<li>如果场景中的人弯腰或倒立，则身体姿势算法的效果将不佳。</li>
+<li>衣服穿的太飘逸也不行，影响识别。</li>
+<li>再比如跳舞的case，如果一个人在视图中部分遮挡了另一个人，识别算法也懵逼。</li>
+<li>如果对象靠近屏幕边缘，则结果可能会变差。</li>
+<li>总之追踪手部动作需要考虑的因素都适用于人体姿势检测。</li>
+</ul>
+<p>19个身体的关键点示意图（摘自苹果官网）<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966936952761.jpg" alt=""></p>
+<p>Vision 和 ARkit 的 support 对比：</p>
+<ul>
+<li>Vision最大的胜出点是提供置信度，让开发者可以更灵活的处理结果。</li>
+<li>ARKit由于专为实时运动捕捉设计，因此只能用于手机后置摄像头，这成为ARKit最大劣势，根本没法支持talking head的场景</li>
+<li>另外Vision支持苹果全家桶（除了Watch设备)<br><img src="/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/15966916584446.jpg" alt=""></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+<blockquote class="blockquote-center">
+    完
+</blockquote>
+
+  <span id="inline-green" style="border-radius:3px;">作者</span>：<a class="link-blue" href="https://github.com/wolf6" target="_blank">wolf6</a><br/>有问题请 <a class="link-blue" href="https://wolf6.github.io/guestbook" target="_blank">留言</a> 或者私信我的 <a class="link-blue" href="http://weibo.com/6108044972/" target="_blank">微博</a>。
+
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>满分是10分的话，这篇文章你给几分</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/reward/reward_wechat.png" alt="六郎 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/reward/reward_alipay.png" alt="六郎 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/09/12/WWDC2020-Session-10043-Build-an-Action-Classifier-with-Create-ML/" rel="next" title="[WWDC2020 Session 10043] Build an Action Classifier with Create ML">
+                <i class="fa fa-chevron-left"></i> [WWDC2020 Session 10043] Build an Action Classifier with Create ML
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/09/12/WWDC2020-Sesstion-10099-Explore-the-Action-vision-Demo/" rel="prev" title="[WWDC2020 Sesstion 10099] Explore the Action & vision Demo">
+                [WWDC2020 Sesstion 10099] Explore the Action & vision Demo <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/avatar/avatar.png"
+               alt="六郎" />
+          <p class="site-author-name" itemprop="name">六郎</p>
+          <p class="site-description motion-element" itemprop="description">“Live well, Laugh often, Love much.”</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wolf6" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/6108044972/" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+      <!-- hack一个虚线出来 -->
+      <section style="border-top:1px dotted #ccc;height:10px;"></section>
+      <!-- weibo show -->
+      <iframe width="100%" height="120" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=120&fansRow=2&ptype=1&speed=0&skin=5&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=5346488237&verifier=d529ff3a&dpc=1"></iframe>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">您是第<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>个小伙伴</span>
+  
+
+  
+    <span class="site-pv">本站总浏览<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">六郎</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io" rel="external nofollow">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">
+    NexT.Muse
+  </a>
+</div>
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'liulangblog';
+      var disqus_identifier = '2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/';
+      var disqus_title = "[WWDC2020 Session 10653] Detect Body and Hand Pose with Vision";
+      var disqus_url = 'https://zluyang.github.io/luyang/2020/09/12/WWDC2020-Session-10653-Detect-Body-and-Hand-Pose-with-Vision/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+  <!-- 按需加载背景 -->
+  <!-- 识别手机或电脑的js开始 -->  
+  <!--
+  <script type="text/javascript">
+  (function(){  
+    var res = GetRequest();  
+    var par = res['index'];  
+    if(par!='gfan'){  
+      var ua=navigator.userAgent.toLowerCase();  
+      var contains=function (a, b){  
+          if(a.indexOf(b)!=-1){return true;}  
+      };   
+      if((contains(ua,"android") && contains(ua,"mobile"))||(contains(ua,"android") && contains(ua,"mozilla"))||(contains(ua,"android") && contains(ua,"opera"))||contains(ua,"ucweb7")||contains(ua,"iphone")){
+        return false;
+      } else {
+        $.getScript("/js/src/particle.js");
+      }
+    }  
+  })();  
+  function GetRequest() {  
+    var url = location.search;
+    var theRequest = new Object();  
+    if (url.indexOf("?") != -1) {  
+      var str = url.substr(1);  
+      strs = str.split("&");  
+      for(var i = 0; i < strs.length; i ++) {  
+        theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);  
+      }  
+    }  
+    return theRequest;  
+  }  
+  </script>
+  -->
+  <!-- 识别手机或电脑的js结束 -->  
+
+  <!-- 背景动画 -->
+  <!-- <script type="text/javascript" src="/js/src/particle.js"></script> -->
+  <!-- 页面点击小红心 -->
+  <!-- <script type="text/javascript" src="/js/src/love.js"></script> -->
+
+  <script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="六郎の部落格",clearTimeout(st)):(document.title="六郎の部落格 "+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},4e3))})</script>
+
+</body>
+</html>
